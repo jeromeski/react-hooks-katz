@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Joke from './Joke';
+import Stories from './Stories';
 
 function App() {
   const [userQuery, setUserQuery] = useState('')
@@ -9,22 +11,33 @@ function App() {
   };
 
 	const searchQuery = () => {
-    window.open(`https://google.com/search?q=${userQuery}`)
+    window.open(`https://google.com/search?q=${userQuery}`);
   };
 
   const handleKeyPress = (e) => {
-    if(e.key === 'Enter') {
-      searchQuery()
-    }
-  }
+		if (e.key === 'Enter') {
+			searchQuery();
+		}
+	};
 
-	return <div className='App'>
-    <h1>Hello David</h1>
-    <div className="form">
-      <input type="text" value={userQuery} onChange={updateUserQuery} onKeyPress={handleKeyPress}/>
-      <button onClick={searchQuery}>Search</button>
-    </div>
-  </div>;
+	return (
+		<div className='App'>
+			<h1>Hello David</h1>
+			<div className='form'>
+				<input
+					type='text'
+					value={userQuery}
+					onChange={updateUserQuery}
+					onKeyPress={handleKeyPress}
+				/>
+				<button onClick={searchQuery}>Search</button>
+			</div>
+			<hr />
+      <Joke/>
+      <hr />
+      <Stories/>
+		</div>
+	);
 };
 
 export default App;
