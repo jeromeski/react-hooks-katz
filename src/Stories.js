@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useFetch } from './hooks';
 
 const Stories = () => {
-	const [stories, setStories] = useState([]);
+	const stories = useFetch('https://news-proxy-server.appspot.com/topstories', []);
 
-	useEffect(() => {
-		fetch('https://news-proxy-server.appspot.com/topstories')
-			.then((res) => res.json())
-			.then((json) => setStories(json));
-	}, []);
-
-	console.log(stories.slice(0, 3));
 	return (
 		<div className='Stories'>
 			<h3>Stories</h3>
